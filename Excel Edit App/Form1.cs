@@ -17,6 +17,8 @@ namespace Excel_Edit_App
         public Form1()
         {
             InitializeComponent();
+            workSheetNumberTextEdit.Text = "1";
+            IdColNumberTextEdit.Text = "2";
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -31,7 +33,8 @@ namespace Excel_Edit_App
         {
             int col = int.Parse(columnNumberTextEdit.Text);
             int sheet = int.Parse(workSheetNumberTextEdit.Text);
-            var excel = new Excel(fileLocation, sheet, col);
+            int idCol = int.Parse(IdColNumberTextEdit.Text);
+            var excel = new Excel(fileLocation, sheet, col, idCol);
             int id; float mark;
             for (int i = 0; i < gridView1.DataRowCount; i++)
             {

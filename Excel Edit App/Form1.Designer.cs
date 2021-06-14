@@ -54,6 +54,8 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.IdColNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -73,11 +75,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IdColNumberTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.IdColNumberTextEdit);
             this.layoutControl1.Controls.Add(this.simpleButton3);
             this.layoutControl1.Controls.Add(this.gridControl1);
             this.layoutControl1.Controls.Add(this.columnNumberTextEdit);
@@ -107,10 +112,10 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.markBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 122);
+            this.gridControl1.Location = new System.Drawing.Point(12, 157);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(600, 236);
+            this.gridControl1.Size = new System.Drawing.Size(600, 201);
             this.gridControl1.TabIndex = 12;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -160,11 +165,11 @@
             // 
             // columnNumberTextEdit
             // 
-            this.columnNumberTextEdit.Location = new System.Drawing.Point(392, 83);
+            this.columnNumberTextEdit.Location = new System.Drawing.Point(399, 83);
             this.columnNumberTextEdit.Name = "columnNumberTextEdit";
             this.columnNumberTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.columnNumberTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.columnNumberTextEdit.Size = new System.Drawing.Size(220, 22);
+            this.columnNumberTextEdit.Size = new System.Drawing.Size(213, 22);
             this.columnNumberTextEdit.StyleController = this.layoutControl1;
             this.columnNumberTextEdit.TabIndex = 11;
             // 
@@ -174,7 +179,7 @@
             this.workSheetNumberTextEdit.Name = "workSheetNumberTextEdit";
             this.workSheetNumberTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.workSheetNumberTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.workSheetNumberTextEdit.Size = new System.Drawing.Size(188, 22);
+            this.workSheetNumberTextEdit.Size = new System.Drawing.Size(195, 22);
             this.workSheetNumberTextEdit.StyleController = this.layoutControl1;
             this.workSheetNumberTextEdit.TabIndex = 10;
             // 
@@ -234,7 +239,8 @@
             this.layoutControlItem7,
             this.layoutControlItem2,
             this.layoutControlItem8,
-            this.emptySpaceItem3});
+            this.emptySpaceItem3,
+            this.layoutControlItem9});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(624, 406);
@@ -297,25 +303,25 @@
             this.layoutControlItem6.Control = this.workSheetNumberTextEdit;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 71);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(286, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(293, 26);
             this.layoutControlItem6.Text = "Worksheet number";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(91, 13);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.columnNumberTextEdit;
-            this.layoutControlItem7.Location = new System.Drawing.Point(286, 71);
+            this.layoutControlItem7.Location = new System.Drawing.Point(293, 71);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(318, 26);
+            this.layoutControlItem7.Size = new System.Drawing.Size(311, 26);
             this.layoutControlItem7.Text = "Column number";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(91, 13);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.gridControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 110);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 145);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(604, 240);
+            this.layoutControlItem2.Size = new System.Drawing.Size(604, 205);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -332,12 +338,31 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // IdColNumberTextEdit
+            // 
+            this.IdColNumberTextEdit.Location = new System.Drawing.Point(106, 109);
+            this.IdColNumberTextEdit.Name = "IdColNumberTextEdit";
+            this.IdColNumberTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.IdColNumberTextEdit.Properties.Appearance.Options.UseFont = true;
+            this.IdColNumberTextEdit.Size = new System.Drawing.Size(506, 22);
+            this.IdColNumberTextEdit.StyleController = this.layoutControl1;
+            this.IdColNumberTextEdit.TabIndex = 14;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.IdColNumberTextEdit;
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 97);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(604, 26);
+            this.layoutControlItem9.Text = "Id column number";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(91, 13);
+            // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 97);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 123);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(604, 13);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(604, 22);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // Form1
@@ -366,6 +391,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IdColNumberTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             this.ResumeLayout(false);
 
@@ -398,7 +425,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colmark;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraEditors.TextEdit IdColNumberTextEdit;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
     }
 }
 

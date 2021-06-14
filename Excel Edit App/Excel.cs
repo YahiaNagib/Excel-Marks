@@ -13,16 +13,18 @@ namespace Excel_Edit_App
     {
         string path;
         int col;
+        int idCol;
         List<int> notSavedIds = new List<int>();
 
         _Application excel = new _Excel.Application();
         Workbook wb;
         Worksheet ws;
 
-        public Excel(string path, int sheet, int col)
+        public Excel(string path, int sheet, int col, int idCol)
         {
             this.path = path;
             this.col = col;
+            this.idCol = idCol;
             wb = excel.Workbooks.Open(path);
             ws = wb.Worksheets[sheet];
         }
@@ -38,7 +40,7 @@ namespace Excel_Edit_App
                     notSavedIds.Add(id);
                     break;
                 }
-                excelId = ws.Cells[i, 2].Text;
+                excelId = ws.Cells[i, idCol].Text;
 
                 if (int.TryParse(excelId, out number) && checkId(excelId, id))
                 {
@@ -50,13 +52,16 @@ namespace Excel_Edit_App
 
         public bool checkId(string excelId, int id)
         {
-            if (excelId.Length == 4)
+            
+            if (excelId.Length <= 4)
             {
                 return int.Parse(excelId) == id;
             }
             else
             {
-                return int.Parse(excelId.Substring(excelId.Length - 4)) == id;
+                return int.Parse(excelId.Substring(excelId.Length - 4)) == id || 
+                       int.Parse(excelId) == id;
+
             }
 
         }
