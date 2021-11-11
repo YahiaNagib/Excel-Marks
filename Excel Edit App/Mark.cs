@@ -10,5 +10,6 @@ namespace Excel_Edit_App
     {
         public int id { get; set; }
         public float mark { get; set; }
+        public string name { get; set; }
     }
 }

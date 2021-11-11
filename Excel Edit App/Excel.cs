@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
 using _Excel = Microsoft.Office.Interop.Excel;
@@ -14,67 +15,84 @@ namespace Excel_Edit_App
         string path;
         int col;
         int idCol;
-        List<int> notSavedIds = new List<int>();
+        int nameCol;
+        int sheet;
 
         _Application excel = new _Excel.Application();
         Workbook wb;
         Worksheet ws;
 
-        public Excel(string path, int sheet, int col, int idCol)
+        public Excel(string path, int sheet, int col, int idCol, int nameCol)
         {
             this.path = path;
             this.col = col;
             this.idCol = idCol;
+            this.sheet = sheet;
+            this.nameCol = nameCol;
+        }
+
+        private void OpenFile()
+        {
             wb = excel.Workbooks.Open(path);
             ws = wb.Worksheets[sheet];
         }
 
-        public void EditCell(int id, float mark)
+        public Dictionary<int, string> ReadFile()
         {
-            string excelId;
-            int number;
-            for (int i = 1; i <= ws.Rows.Count; i++)
+            OpenFile();
+            var data = new Dictionary<int, string>();
+            string excelId, name;
+            for (int i = 1; i<= ws.Rows.Count; i++)
             {
-                if (i > 600)
-                {
-                    notSavedIds.Add(id);
-                    break;
-                }
-                excelId = ws.Cells[i, idCol].Text;
+                if (i > 600) break;
 
-                if (int.TryParse(excelId, out number) && checkId(excelId, id))
+                excelId = ws.Cells[i, idCol].Text;
+                excelId = Regex.Replace(excelId, @"\s+", "");
+                name = ws.Cells[i, nameCol].Text;
+
+                if (int.TryParse(excelId, out int intId))
                 {
-                    ws.Cells[i, col].Value2 = mark;
-                    break;
+                    data.Add(intId, name);
                 }
             }
+            excel.Quit();
+            return data;
         }
 
-        public bool checkId(string excelId, int id)
+        public Dictionary<int, float> EditCell(Dictionary<int,float> inputData)
         {
-            
-            if (excelId.Length <= 4)
+            OpenFile();
+            string excelId;
+            for (int i = 1; i <= ws.Rows.Count; i++)
             {
-                return int.Parse(excelId) == id;
-            }
-            else
-            {
-                return int.Parse(excelId.Substring(excelId.Length - 4)) == id || 
-                       int.Parse(excelId) == id;
 
-            }
+                if (i > 600 || inputData.Count == 0)  break; 
 
+                excelId = ws.Cells[i, idCol].Text;
+                excelId = Regex.Replace(excelId, @"\s+", "");
+
+                if (int.TryParse(excelId, out int intId))
+                {
+                    if (inputData.ContainsKey(intId))
+                    {
+                        ws.Cells[i, col].Value2 = inputData[intId];
+                        inputData.Remove(intId);
+                    }
+                    else if ( excelId.Length > 4 &&
+                            inputData.ContainsKey(int.Parse(excelId.Substring(excelId.Length - 4))))
+                    {
+                        ws.Cells[i, col].Value2 = inputData[int.Parse(excelId.Substring(excelId.Length - 4))];
+                        inputData.Remove(int.Parse(excelId.Substring(excelId.Length - 4)));
+                    }
+                }
+            }
+            return inputData;
         }
 
         public void Save()
         {
             wb.Save();
             excel.Quit();
-        }
-
-        public List<int> check()
-        {
-            return notSavedIds;
         }
 
     }
