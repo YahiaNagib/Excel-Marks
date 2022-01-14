@@ -52,7 +52,15 @@ namespace Excel_Edit_App
 
                 if (int.TryParse(excelId, out int intId))
                 {
-                    data.Add(intId, name);
+                    try 
+                    { 
+                        data.Add(intId, name);
+                        if (intId > 999)
+                        {
+                            data.Add(intId % 10000, name);
+                        }
+                    } 
+                    catch { }
                 }
             }
             excel.Quit();

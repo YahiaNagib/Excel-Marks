@@ -78,6 +78,7 @@ namespace Excel_Edit_App
                     ids = ids + item.Key + " ";
                 }
                 MessageBox.Show("All is saved except " + ids);
+                label1.Text = "Done!";
             }
             // markBindingSource.Clear();
 
